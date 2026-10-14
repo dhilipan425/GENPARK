@@ -1,0 +1,133 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  color: white;
+  background:
+    radial-gradient(ellipse at top, #153b65, transparent 65%),
+    #050b17;
+}
+
+.loader {
+  width: min(92%, 650px);
+  text-align: center;
+}
+
+.brand {
+  font-size: 44px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: #55dcff;
+}
+
+.brand span {
+  color: white;
+}
+
+.subtitle {
+  margin-top: 10px;
+  color: #84a9c7;
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+.road {
+  position: relative;
+  height: 155px;
+  margin: 45px 0 30px;
+  overflow: hidden;
+  border-top: 2px solid #28465f;
+  border-bottom: 2px solid #28465f;
+  background: linear-gradient(#101e31, #16273c);
+}
+
+.road-line {
+  position: absolute;
+  top: 50%;
+  width: 200%;
+  border-top: 3px dashed #53d7ff;
+  animation: roadMove 0.65s linear infinite;
+}
+
+.car {
+  position: absolute;
+  left: -100px;
+  font-size: 48px;
+  line-height: 1;
+  filter: drop-shadow(0 0 12px #00bfff80);
+}
+
+.car-one {
+  top: 20px;
+  animation: drive 3s linear infinite;
+}
+
+.car-two {
+  top: 88px;
+  animation: drive 3.5s linear infinite;
+  animation-delay: 0.7s;
+}
+
+.car-body {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+
+h1 {
+  font-size: clamp(19px, 4vw, 28px);
+}
+
+.message {
+  margin-top: 12px;
+  color: #9eb5ca;
+  font-size: 14px;
+}
+
+.progress {
+  height: 6px;
+  margin: 30px 0 14px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #1c3046;
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #008cff, #5cf0ff);
+  box-shadow: 0 0 15px #00cfff;
+  animation: fillProgress 5s linear forwards;
+}
+
+.percentage {
+  display: flex;
+  justify-content: space-between;
+  color: #83a8c6;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+@keyframes drive {
+  from { left: -100px; }
+  to { left: calc(100% + 20px); }
+}
+
+@keyframes roadMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes fillProgress {
+  to { width: 100%; }
+}

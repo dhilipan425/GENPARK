@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07111f">
+  <title>GENPARK | Smart Parking</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a href="#" class="brand">GEN<span>PARK</span></a>
+    <nav>
+      <a href="#parking">Parking</a>
+      <a href="#booking">My Booking</a>
+      <button id="settingsBtn" class="nav-btn">Settings</button>
+    </nav>
+    <button id="logoutBtn" class="outline-btn">Log out</button>
+  </header>
+
+  <main class="container">
+    <section class="welcome">
+      <div>
+        <p class="eyebrow">SMART PARKING MANAGEMENT</p>
+        <h1>Park smarter.<br><span>Move faster.</span></h1>
+        <p class="muted">Find your space, reserve your slot, and enjoy the journey.</p>
+      </div>
+      <div class="hero-car" aria-hidden="true">🚘</div>
+    </section>
+
+    <section class="search-panel" aria-label="Find parking">
+      <div class="field">
+        <label for="location">Parking location</label>
+        <input id="location" type="text" placeholder="Enter a location">
+      </div>
+      <div class="field">
+        <label for="duration">Parking duration</label>
+        <select id="duration">
+          <option value="1">1 hour</option>
+          <option value="2">2 hours</option>
+          <option value="3">3 hours</option>
+          <option value="4">4 hours</option>
+          <option value="6">6 hours</option>
+          <option value="8">8 hours</option>
+        </select>
+      </div>
+      <button id="searchBtn" class="primary-btn">Find parking</button>
+    </section>
+
+    <section class="stats">
+      <article class="stat-card">
+        <span class="stat-icon">🅿️</span>
+        <p>Available slots</p>
+        <h2 id="availableCount">12</h2>
+      </article>
+      <article class="stat-card">
+        <span class="stat-icon">🚗</span>
+        <p>Occupied slots</p>
+        <h2 id="occupiedCount">4</h2>
+      </article>
+      <article class="stat-card">
+        <span class="stat-icon">₹</span>
+        <p>Price per hour</p>
+        <h2>₹40</h2>
+      </article>
+    </section>
+
+    <section id="parking" class="section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">SELECT YOUR SPACE</p>
+          <h2>Parking slots</h2>
+        </div>
+        <div class="legend">
+          <span><i class="dot available"></i> Available</span>
+          <span><i class="dot occupied"></i> Occupied</span>
+          <span><i class="dot selected"></i> Selected</span>
+        </div>
+      </div>
+
+      <div class="parking-location">
+        <span>📍</span>
+        <div>
+          <strong id="lotTitle">GENPARK Central Parking</strong>
+          <p id="lotSubtitle">Demo parking facility · Choose an available slot</p>
+        </div>
+      </div>
+
+      <div id="slotGrid" class="slot-grid"></div>
+      <p id="slotMessage" class="notice" role="status">
+        Select an available slot to continue.
+      </p>
+    </section>
+
+    <section id="booking" class="section booking-layout">
+      <article class="panel">
+        <p class="eyebrow">RESERVATION SUMMARY</p>
+        <h2>Your booking</h2>
+        <div class="summary-row">
+          <span>Location</span>
+          <strong id="summaryLocation">GENPARK Central Parking</strong>
+        </div>
+        <div class="summary-row">
+          <span>Selected slot</span>
+          <strong id="summarySlot">Not selected</strong>
+        </div>
+        <div class="summary-row">
+          <span>Duration</span>
+          <strong id="summaryDuration">1 hour</strong>
+        </div>
+        <div class="summary-row total">
+          <span>Estimated total</span>
+          <strong id="summaryPrice">₹0</strong>
+        </div>
+        <button id="bookBtn" class="primary-btn full" disabled>Reserve slot</button>
+        <p class="small-note">Demo only. This does not create a real-world reservation.</p>
+      </article>
+
+      <article class="panel">
+        <p class="eyebrow">BOOKING STATUS</p>
+        <h2>Confirmation</h2>
+        <div id="bookingStatus" class="status-box" role="status">
+          <span class="status-icon">🅿️</span>
+          <div>
+            <strong>No active booking</strong>
+            <p>Select an available slot to begin.</p>
+          </div>
+        </div>
+        <div class="summary-row">
+          <span>Reference</span>
+          <strong id="bookingReference">—</strong>
+        </div>
+        <button id="payBtn" class="secondary-btn full" disabled>
+          Simulate demo payment
+        </button>
+        <button id="exitBtn" class="outline-btn full" disabled>
+          Verify exit
+        </button>
+      </article>
+    </section>
+
+    <section class="section assistant-panel">
+      <div>
+        <p class="eyebrow">GENPARK HELPER</p>
+        <h2>Parking assistant</h2>
+        <p class="muted">Ask about prices, slots, booking, or exit verification.</p>
+      </div>
+      <div id="chatMessages" class="chat-messages" aria-live="polite">
+        <p class="chat-bubble bot">Hello! I'm the GENPARK demo assistant. How can I help?</p>
+      </div>
+      <form id="chatForm" class="chat-form">
+        <input id="chatInput" type="text" placeholder="Ask a parking question..." autocomplete="off" required>
+        <button class="primary-btn" type="submit">Send</button>
+      </form>
+      <p class="small-note">This is a rule-based demo assistant, not a connected AI service.</p>
+    </section>
+
+    <section id="settingsPanel" class="section panel hidden">
+      <p class="eyebrow">PREFERENCES</p>
+      <h2>Settings</h2>
+      <label class="setting-row">
+        <span>Use a brighter theme</span>
+        <input id="themeToggle" type="checkbox">
+      </label>
+      <label class="setting-row">
+        <span>Parking price per hour (₹)</span>
+        <input id="rateInput" type="number" min="1" max="10000" value="40">
+      </label>
+      <button id="saveSettingsBtn" class="primary-btn">Save settings</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>GENPARK · Smart Parking System</p>
+    <p>Prototype for demonstration. No real payment or live parking data.</p>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
